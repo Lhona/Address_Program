@@ -39,4 +39,4 @@ from global_Vars import user_phonenum
 
 from file_Functions import *
 
-menustart()
+menu_start()

@@ -1,5 +1,5 @@
 __all__ = [
-    "menustart",
+    "menu_start",
     "menuloop"
     ]
 #index allows our functions to work in this file system properly.

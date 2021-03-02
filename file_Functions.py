@@ -2,19 +2,23 @@ from global_Vars import user_name
 from global_Vars import user_address
 from global_Vars import user_phonenum
 
+import sys
 
-def menustart():
-    print("Welcome to the file program.")
-    print("Please type [START] to begin or [QUIT] to end.")
-    user_entry = ''
-    while user_entry != "END":
-        if user_entry == "START":
-            menuloop()
-            break
-        else:
-            print("That is not a valid entry, please try again")
-            continue
-    else:
-        quit()
+def menu_start():
+        print("Welcome to the program!")
+        print("Type [START] to begin or [QUIT] to end the program.")
+        user_entry = ''
+        while user_entry != "QUIT":
+            user_entry = input("Enter Command: ")
+            if user_entry == "NEXT":
+                menuloop()
+                break
+            elif user_entry == "QUIT":
+                print("Thank you for using the virtual garage!")
+                sys.exit(["User has chosen to quit.\nThe program will now end."])
+                break
+            else:
+                print("That is not a valid entry.\nPlease try again.")
+                continue
 
-def menuloop()
+#def menuloop()
