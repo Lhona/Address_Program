@@ -4,9 +4,7 @@ from global_Vars import user_phonenum
 from global_Vars import tree_a1
 from global_Vars import tree_a2
 from global_Vars import tree_a3
-from global_Vars import file_a1
-from global_Vars import file_a2
-from global_Vars import file_a3
+from global_Vars import cwd
 
 import os
 import sys
@@ -28,7 +26,7 @@ def menu_start():
     while user_entry != "QUIT":
         user_entry = input("Enter Command: ")
         if user_entry == "START":
-            data_entry()
+            choose_directory()
             break
         elif user_entry == "QUIT":
             print("Thank you for using the program!")
@@ -49,19 +47,31 @@ def choose_directory():
         print("Directory [tree_a2]")
         print("Directory [tree_a3]")
         user_entry = input("Please enter: ")
+        wrkFileDirect = ''
         if user_entry == "tree_a1":
-            verify_directory(user_entry)
-            user_Choice = user_entry
+            #assinging the global variable
+            user_Choice = tree_a1
+            wrkFileDirect = os.path.join(cwd, user_Choice)
+            verify_directory(wrkFileDirect)
+            print("Directory is listed as:\n")
+            print(wrkFileDirect)
+
             break
         elif user_entry == "tree_a2":
-            verify_directory(user_entry)
-            user_Choice = user_entry
+            user_Choice = tree_a2
+            wrkFileDirect = os.path.join(cwd, user_Choice)
+            verify_directory(wrkFileDirect)
+            print("Directory is listed as:\n")
+            print(wrkFileDirect)
             break
             #tree_a3 does NOT exist, merely a demonstration that the directory
             #verification system works.
         elif user_entry == "tree_a3":
-            verify_directory(user_entry)
-            user_Choice = user_entry
+            user_Choice = tree_a3
+            wrkFileDirect = os.path.join(cwd, user_Choice)
+            verify_directory(wrkFileDirect)
+            print("Directory is listed as:\n")
+            print(wrkFileDirect)
             break
         else:
             print("Not a valid entry, try again.")
@@ -71,26 +81,37 @@ def choose_directory():
 #verifies directory existence
 def verify_directory(file_directory):
     if os.path.exists(file_directory):
-        open_directory()
+        print("Directory does exist, proceeding...")
+        details_entry(file_directory)
     else:
-        print("directory does not exist, please choose a different directory.")
+        print("Directory does not exist, please choose a different directory.")
         choose_directory()
 
 #user enters in details to be written to the file.
-def details_entry():
+def details_entry(wrkFileDirect):
     print('''Please enter the specified information below for each prompt: \n
     Filename, name, address, and phone number.
     ''')
     print("Please enter your desired filename.")
     file_name = input("Filename: ")
+    create = open(os.path.join(wrkFileDirect, file_name), "x")
     print("Please enter your name.")
     user_name = input("Name: ")
     print("Please enter your address.")
     user_address = input("Address: ")
     print("Please enter your phone number.")
     user_phonenum = input("Phone Number: ")
-    write_data(file_name, user_name, user_address, user_phonenum)
+    writeXread_data(file_name, user_name, user_address, user_phonenum, wrkFileDirect)
 
 #this writes the chosen data to the chosen file location(user choice)
-def write_data(filename, username, u_address, u_number):
-    with open(, 'w')
+def writeXread_data(filename, username, u_address, u_number, wrkFileDirect):
+    action = open(os.path.join(wrkFileDirect, filename), "w")
+    action.write(username + "\n")
+    action.write(u_address + "\n")
+    action.write(u_number + "\n")
+    action.close()
+
+    TYPE = open(os.path.join(wrkFileDirect, filename), "r")
+    READCONTENTS = TYPE.read()
+    print(READCONTENTS)
+    TYPE.close()
