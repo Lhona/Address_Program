@@ -36,6 +36,12 @@ Startmenu
 from global_Vars import user_name
 from global_Vars import user_address
 from global_Vars import user_phonenum
+from global_Vars import tree_a1
+from global_Vars import tree_a2
+from global_Vars import tree_a3
+from global_Vars import file_a1
+from global_Vars import file_a2
+from global_Vars import file_a3
 import os
 from file_Functions import *
 

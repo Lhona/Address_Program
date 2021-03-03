@@ -4,6 +4,10 @@ from global_Vars import user_phonenum
 from global_Vars import tree_a1
 from global_Vars import tree_a2
 from global_Vars import tree_a3
+from global_Vars import file_a1
+from global_Vars import file_a2
+from global_Vars import file_a3
+
 import os
 import sys
 
@@ -47,12 +51,17 @@ def choose_directory():
         user_entry = input("Please enter: ")
         if user_entry == "tree_a1":
             verify_directory(user_entry)
+            user_Choice = user_entry
             break
         elif user_entry == "tree_a2":
             verify_directory(user_entry)
+            user_Choice = user_entry
             break
+            #tree_a3 does NOT exist, merely a demonstration that the directory
+            #verification system works.
         elif user_entry == "tree_a3":
             verify_directory(user_entry)
+            user_Choice = user_entry
             break
         else:
             print("Not a valid entry, try again.")
@@ -64,17 +73,24 @@ def verify_directory(file_directory):
     if os.path.exists(file_directory):
         open_directory()
     else:
-        print("directory does not exist, please type the correct directory.")
+        print("directory does not exist, please choose a different directory.")
         choose_directory()
 
 #user enters in details to be written to the file.
 def details_entry():
     print('''Please enter the specified information below for each prompt: \n
-    Name, address, and phone number.
+    Filename, name, address, and phone number.
     ''')
+    print("Please enter your desired filename.")
+    file_name = input("Filename: ")
     print("Please enter your name.")
     user_name = input("Name: ")
     print("Please enter your address.")
     user_address = input("Address: ")
     print("Please enter your phone number.")
     user_phonenum = input("Phone Number: ")
+    write_data(file_name, user_name, user_address, user_phonenum)
+
+#this writes the chosen data to the chosen file location(user choice)
+def write_data(filename, username, u_address, u_number):
+    with open(, 'w')
