@@ -18,7 +18,7 @@ Submission instructions: Click on the title above to submit your assignment.
 
 '''
 steps
-Startmenu
+Startmenu4
     menuprompt asking for directory location choice (3 choices)
     menuprompt runs verify function on directory choice
     verify function returns printout verification of location (represented name,

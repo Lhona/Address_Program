@@ -3,6 +3,7 @@ __all__ = [
     "choose_directory",
     "verify_directory",
     "details_entry",
-    "writeXread_data"
+    "writeXread_data",
+    "systemshutdown"
     ]
 #index allows our functions to work in this file system properly.
